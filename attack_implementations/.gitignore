@@ -1,0 +1,14 @@
+# Ignore large files and artifacts
+*.gguf
+*.bin
+*.pt
+*.pth
+*.ckpt
+__pycache__/
+*.pyc
+.DS_Store
+*.log
+weights/
+models/
+data/*.json
+!data/*.md
