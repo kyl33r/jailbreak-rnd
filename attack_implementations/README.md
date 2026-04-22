@@ -1,51 +1,48 @@
-# Attack Implementations for Research
+# Jailbreak Research - Attack Implementations
 
-This directory contains implementations of jailbreak attack methods for defensive security research.
+This directory contains attack implementations for defensive security research.
+
+## Setup
+
+### Quick Start: Black-Box Testing
+
+```bash
+# Test with known adversarial patterns
+python test_adversarial.py --model qwen3:8b --output results.json
+```
+
+### Full GCG Attacks
+
+For white-box GCG attacks (requires model weights with gradient access):
+
+```bash
+# I-GCG - most effective
+cd i_gcg
+pip install -r requirements.txt
+python attack_llm_core_best_update_ours_target.py --model_path /path/to/model
+```
 
 ## Directory Structure
 
 ```
 attack_implementations/
-├── gcg/              # Original GCG attack
-├── i_gcg/            # Improved GCG (I-GCG)
-├── amplegcg/          # AmpleGCG - Generative approach
-├── image_jailbreak/   # Chain-of-Jailbreak for images
-└── coljailbreak/      # ColJailBreak for images
+├── test_adversarial.py    # Black-box pattern testing (works with Ollama)
+├── gcg/               # Original GCG
+├── i_gcg/             # Improved GCG (ICLR 2025)
+├── amplegcg/          # Universal suffixes
+├── image_jailbreak/    # Image generation attacks
+└── coljailbreak/      # Collaborative image attacks
 ```
-
-## Attack Methods Overview
-
-### Text LLM Attacks
-
-| Directory | Method | Description |
-|-----------|--------|-------------|
-| `gcg/` | GCG | Original Greedy Coordinate Gradient attack |
-| `i_gcg/` | I-GCG | Improved techniques, ~100% ASR |
-| `amplegcg/` | AmpleGCG | Universal transferable suffixes |
-
-### Image Generation Attacks
-
-| Directory | Method | Description |
-|-----------|--------|-------------|
-| `image_jailbreak/` | Chain-of-Jailbreak | Multi-step editing attack |
-| `coljailbreak/` | ColJailBreak | Collaborative generation/editing |
-
-## Usage
-
-Each implementation has its own README and requirements. See individual directories for details.
-
-**Important:** These tools are for authorized security research only.
 
 ## Requirements
 
-- Python environment with GPU support
-- Model weights (Llama-2, Vicuna, or target models)
-- See each implementation's requirements.txt
+- Python 3.9+
+- CUDA GPU (for white-box attacks)
+- Model weights (see individual READMEs)
 
-## References
+## Models
 
-- GCG: arXiv:2307.15043
-- I-GCG: arXiv:2405.21018 (ICLR 2025)
-- AmpleGCG: arXiv:2404.07921 (COLM 2024)
-- CoJ: arXiv:2410.03869 (ACL 2025)
-- ColJailBreak: Ma & Zhang, 2024
+White-box attacks need local model weights. Options:
+- Llama-2-7b-chat (Meta)
+- Vicuna-7b-v1.5 (LMSYS)
+- Convert Ollama model to GGUF

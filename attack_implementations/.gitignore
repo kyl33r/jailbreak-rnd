@@ -1,14 +1,63 @@
-# Ignore large files and artifacts
+# Dependencies and build artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.whl
+
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+env/
+
+# Model weights (large files - don't commit)
 *.gguf
 *.bin
 *.pt
 *.pth
 *.ckpt
-__pycache__/
-*.pyc
-.DS_Store
-*.log
+checkpoints/
 weights/
 models/
+*.safetensors
+
+# HuggingFace cache
+.cache/
+hf_cache/
+transformers_cache/
+
+# Output files
+output/
+outputs/
+logs/
+*.log
+results/
+adversarial_test_results.json
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Secrets
+.env
+*.env
+api_keys/
+keys/
+credentials.json
+
+# Data (keep structure but not large files)
 data/*.json
-!data/*.md
+!data/README.md
